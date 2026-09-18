@@ -29,6 +29,7 @@ def main():
     elif args.operation == "multiply":
         result = multiply(args.a, args.b)
 
+    print(f"Result: {result}")
 
 if __name__ == "__main__":
     main()
