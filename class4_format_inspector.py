@@ -1,0 +1,108 @@
+import json
+import logging
+from pathlib import Path
+
+import pandas as pd
+import yaml
+import os
+from dotenv import load_dotenv
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)-8s %(message)s",
+    datefmt="%H:%M:%S"
+)
+logger = logging.getLogger(__name__)
+
+
+def inspect_csv(filepath):
+    """Read a CSV file and display basic information."""
+    # TODO:
+    # 1. Read the file using pd.read_csv().
+    # 2. Log the filepath at INFO.
+    # 3. Print the first three rows (e.g. DataFrame.head(3))
+
+
+    file_path = Path(filepath)
+
+    if not file_path.exists():
+        logger.warning(f"File does not exist: {file_path}")
+        return None
+
+    logger.info(f"Inspecting CSV: {file_path}")
+    df = pd.read_csv(file_path)
+    print(df.head(3))
+
+    return df
+
+    pass
+
+
+def inspect_json(filepath):
+    """Read a JSON file and display basic information."""
+    # TODO:
+    # 1. Open the file and read it using json.load().
+    # 2. Log the filepath at INFO.
+    # 3. Print the contents.
+
+   
+    logger.info(f"Inspecting JSON: {filepath}")
+
+    with open(filepath, "r") as f:
+        data = json.load(f)
+
+    print(data)
+
+    pass
+
+
+
+def inspect_yaml(filepath):
+    """Read a YAML file and display basic information."""
+
+    logger.info(f"Inspecting YAML: {filepath}")
+
+    with open(filepath, "r") as f:
+        data = yaml.safe_load(f)
+
+    print(data)
+    pass
+
+
+def inspect_env():
+    """Read a .env file and display basic information."""
+    load_dotenv()
+
+    keys = [
+        key for key in ["USERNAME", "PASSWORD"]
+        if os.getenv(key) is not None
+    ]
+
+ 
+    logger.info("Loaded environment variables from .env")
+    print(keys)
+
+
+def main():
+    # TODO:
+    # 1. Create a Path object for the data directory.
+    # 2. Use the / operator to build the CSV, JSON, and YAML paths.
+    # 3. Call each inspection function using the matching path.
+    # 4. Call inspect_env() without an argument.
+
+    data_dir = Path("data")
+
+    csv_path = data_dir / "sample.csv"
+    json_path = data_dir / "sample.json"
+    yaml_path = data_dir / "sample.yaml"
+
+    inspect_csv(csv_path)
+    inspect_json(json_path)
+    inspect_yaml(yaml_path)
+    inspect_env()
+
+    pass
+
+
+if __name__ == "__main__":
+    main()
