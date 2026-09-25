@@ -18,5 +18,3 @@ venv/
 .vscode/
 .idea/
 .env
-
-class2_argparse_demo.py
