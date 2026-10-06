@@ -35,8 +35,8 @@ def inspect_extension(file_info):
     #         Log an ERROR message (e.g. unsupported format).
     #         Raise ValueError.
     if file_info["extension"] != supported_extension:
-        logger.error(f"Unsupported file format: {file_info['extension']}")
-        raise ValueError(f"Unsupported file format: {file_info['extension']}")
+        logger.error(f"Unsupported format: {file_info['extension']}")
+        raise ValueError(f"Unsupported format: {file_info['extension']}")
 
     # TODO 5: Return file_info.
     return file_info

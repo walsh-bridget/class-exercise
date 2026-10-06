@@ -29,11 +29,11 @@ def remove_duplicates(df):
     # Log a DEBUG message containing the before and after row counts.
     # Return the resulting DataFrame.
     
-    before = len(df)
+    before = df.copy()
 
     df = df.drop_duplicates()
 
-    logger.debug(f"Removed {before - len(df)} duplicate row(s)")
+    logger.debug(f"Removed {len{before} - len(df)} duplicate row(s)")
 
     return df
 
