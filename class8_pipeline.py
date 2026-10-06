@@ -21,6 +21,7 @@ def main():
         sys.exit(1)
 
     logger.info("Validation passed; %d rows ready for processing", len(df))
+    logger.info("Pipeline completed")
 
 
 if __name__ == "__main__":
